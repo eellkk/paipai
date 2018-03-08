@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import PaipaiIndex from '@/components/PaipaiIndex'
+import PostDetail from '@/components/PostDetail'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '/post/:id',
+      name: 'post-detail',
+      component: PostDetail
+    },
+    {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      component: PaipaiIndex
     }
   ]
 })
