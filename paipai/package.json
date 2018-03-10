@@ -14,8 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -38,7 +40,7 @@
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
     "cross-spawn": "^5.0.1",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.10",
     "eslint": "^4.15.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",

@@ -52,10 +52,6 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.sass$/,
-        loaders: ['style', 'css', 'sass']
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -78,6 +74,12 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      }
+    ],
+    loaders: [
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
       }
     ]
   },
