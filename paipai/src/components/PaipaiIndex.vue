@@ -2,14 +2,40 @@
   <div class="all-container">
     <div class="title">
       <img src="https://s2.d2scdn.com/2018/03/10/Fi5IoWh4hncFupJxeM7oAU5m-MKB.png" alt="">
-      <span class="hello">hello paipai!</span>
-      <br>
-      <span class="coming">coming soon...</span>
+      <span class="hello">A RANDOM GUY FROM A RANDOM BOOKSTORE</span>
+      <!-- <span class="coming">coming soon...</span> -->
     </div>
+    <div class="title-picture">
+      <div class="nav">
+        <span class="nav-item" :class="{active: currentTab == 'home'}" @click="swtichTab('home')">HOME</span>
+        <span class="nav-item" :class="{active: currentTab == 'post'}" @click="swtichTab('post')">POST</span>
+        <span class="nav-item" :class="{active: currentTab == 'picture'}" @click="swtichTab('picture')">PICTURE</span>
+      </div>
+      <img src="https://s2.d2scdn.com/2018/03/13/FnYf0JUO0P_D2W9XinXgVJDrrr_e.JPG" alt="">
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+export default {
+  data () {
+    return {
+      title: '',
+      currentTab: 'home'
+    }
+  },
+  async created () {
+    const title = await this.$axios('/api/v1/post/2')
+    console.log(title)
+  },
+  methods: {
+    swtichTab (tab) {
+      this.currentTab = tab
+      this.$router.push(tab)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -21,10 +47,14 @@
   margin-top: 80px;
   position: relative;
   display: inline-block;
+  z-index: 2;
+  .nav {
+    position: absolute;
+  }
   img {
     position: absolute;
     height: 40px;
-    top: -35px;
+    top: -20px;
     left: -30px;
     transform: rotate(-22.5deg) translateX(15px);
   }
@@ -34,12 +64,40 @@
     font-size: 26px;
     font-family: 'Arial,Helvetica,sans-serif';
     font-weight: bold;
+    display: block;
+    background: white;
   }
   span.coming {
-    margin-top: 14px;
     display: inline-block;
     position: absolute;
     right: 10px;
+  }
+}
+.title-picture {
+  position: relative;
+  z-index: 1;
+  width: 1100px;
+  margin: auto;
+  margin-top: -15px;
+  img {
+    width: 1100px;
+    border: 3px solid black;
+  }
+  .nav {
+    position: absolute;
+    top: -30px;
+    .nav-item {
+      margin-right: 20px;
+      color: #444;
+      cursor: pointer;
+    }
+    .nav-item.active {
+      color: #aaa;
+    }
+    .nav-item:hover {
+      transition: color 0.8s;
+      color: #aaa;
+    }
   }
 }
 </style>

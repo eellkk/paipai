@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'font-awesome/css/font-awesome.css'
+import axios from 'axios'
+import '../node_modules/quill/dist/quill.bubble.css'
+import '../node_modules/quill/dist/quill.core.css'
+import '../node_modules/quill/dist/quill.snow.css'
 
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
