@@ -40,7 +40,12 @@ export default new Router({
     },
     {
       path: '/forelkpost',
-      name: 'forelkpost',
+      name: 'elkpost',
+      component: ForElkPost
+    },
+    {
+      path: '/forelkpost/:id',
+      name: 'elkedit',
       component: ForElkPost
     }
   ]

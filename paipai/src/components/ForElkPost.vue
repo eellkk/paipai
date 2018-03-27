@@ -20,22 +20,30 @@ export default {
       post: {}
     }
   },
-  mounted () {
+  async mounted () {
     this.quill = new Quill('#editor', {
       theme: 'snow'
     })
+    if (this.$route.params.id) {
+      const res = await this.$axios.get('/api/v1/post/' + this.$route.params.id)
+      console.log(res)
+      this.post = res.data.data[0]
+      this.quill.container.firstChild.innerHTML = this.post.body
+    }
   },
   methods: {
     async doPost () {
       this.post.body = this.quill.container.firstChild.innerHTML
       this.post.active = true
       const res = await this.$axios({
-        method: 'post',
-        url: '/api/v1/post',
+        method: this.post.id ? 'put' : 'post',
+        url: this.post.id ? ('/api/v1/post/' + this.post.id) : '/api/v1/post',
         data: this.post
       })
       console.log(res)
     }
+  },
+  async created () {
   }
 }
 </script>

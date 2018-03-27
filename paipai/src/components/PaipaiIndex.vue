@@ -11,7 +11,10 @@
         <span class="nav-item" :class="{active: currentTab == 'post'}" @click="swtichTab('post')">POST</span>
         <span class="nav-item" :class="{active: currentTab == 'picture'}" @click="swtichTab('picture')">PICTURE</span>
       </div>
-      <img src="https://s2.d2scdn.com/2018/03/13/FnYf0JUO0P_D2W9XinXgVJDrrr_e.JPG" alt="">
+      <img src="https://s2.d2scdn.com/2018/03/27/Fh_cPz601uloMk8-DW0k-Mr5ssHb.jpg?imageMogr2/thumbnail/!1000x400r|imageView2/1/w/1000/h/400" alt="">
+      <span class="goto-post" @click="gotoPost()">
+        DOPO
+      </span>
     </div>
     <router-view></router-view>
   </div>
@@ -26,13 +29,15 @@ export default {
     }
   },
   async created () {
-    const title = await this.$axios('/api/v1/post/2')
-    console.log(title)
+    this.swtichTab('home')
   },
   methods: {
     swtichTab (tab) {
       this.currentTab = tab
       this.$router.push(tab)
+    },
+    gotoPost () {
+      this.$router.push('/forelkpost')
     }
   }
 }
@@ -99,5 +104,15 @@ export default {
       color: #aaa;
     }
   }
+  .goto-post {
+    color: crimson;
+    right: 0px;
+    position: absolute;
+    top: -30px;
+    cursor: pointer;
+  }
 }
+</style>
+<style>
+
 </style>

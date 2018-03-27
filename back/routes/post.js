@@ -6,7 +6,7 @@ const BASE_URL = `/api/v1/post`;
 
 router.get(BASE_URL, async (ctx) => {
   try {
-    const posts = await queries.getAllPosts();
+    const posts = await queries.getAllPosts(ctx.params);
     ctx.body = {
       status: 'success',
       data: posts

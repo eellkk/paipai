@@ -1,8 +1,10 @@
 const knex = require('../connection');
 
-function getAllPosts() {
+function getAllPosts(params) {
+  console.log(params)
   return knex('post')
-  .select('*');
+  .select('*')
+  .orderBy(params.order_by || 'id', 'desc');
 }
 
 function getSinglePost(id) {
