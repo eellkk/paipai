@@ -1,12 +1,18 @@
 const Router = require('koa-router');
 const queries = require('../src/server/db/queries/post');
+const cheerio = require('cheerio');
 
 const router = new Router();
 const BASE_URL = `/api/v1/post`;
 
 router.get(BASE_URL, async (ctx) => {
   try {
-    const posts = await queries.getAllPosts(ctx.params);
+    const items = await queries.getAllPosts(ctx.params);
+    const posts = items.map(i => {
+      const html = cheerio.load('<div>' + i.body + '</div>')
+      i.firstSrc = html('img').attr('src')
+      return i
+    })
     ctx.body = {
       status: 'success',
       data: posts

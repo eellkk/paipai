@@ -2,7 +2,7 @@
   <div class="post" v-if="post.id">
     <div class="title">{{post.title}}</div>
     <div class="created">{{post.created_at|dateformat('datetime')}}</div>
-    <div v-html="post.body"></div>
+    <div v-html="post.body" class="ql-editor"></div>
     <div class="footer clearfix">
       <span class="goto-edit" @click="gotoEdit()">EDIT</span>
     </div>

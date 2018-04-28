@@ -30,6 +30,8 @@ export default {
   },
   async created () {
     this.swtichTab('home')
+    const res = await this.$axios('/do/welcome')
+    console.log(res)
   },
   methods: {
     swtichTab (tab) {
@@ -46,6 +48,12 @@ export default {
 <style lang="scss" scoped>
 .all-container {
   text-align: center;
+}
+.top-fix {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #eee;
 }
 .title {
   text-align: center;

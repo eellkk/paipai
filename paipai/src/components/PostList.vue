@@ -59,6 +59,9 @@ export default {
     max-height: 100px;
     overflow: hidden;
     color: #444;
+    img {
+      max-height: 100px;
+    }
   }
   .created {
     font-size: 12px;
